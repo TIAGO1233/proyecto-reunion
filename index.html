@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Registro de Reuniones</title>
+    <!-- Importar Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Departamento de Coordinación</h1>
+        <h2>Registrar Reunión</h2>
+        <form id="meetingForm">
+            <input type="date" id="date" required>
+            <input type="time" id="time" required>
+            <input type="text" id="location" placeholder="Lugar" required>
+            <textarea id="description" placeholder="Descripción (máx. 500 palabras)" maxlength="500" required></textarea>
+            <input type="file" id="fileUpload" accept=".pdf">
+            <button type="submit">Agregar Reunión</button>
+        </form>
+
+        <h2>Lista de Reuniones</h2>
+        <table id="meetingList">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Lugar</th>
+                    <th>Descripción</th>
+                    <th>Archivo</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        // Configuración de Firebase
+        const firebaseConfig = { 
+            apiKey: "AIzaSyAve83HOmvJF07n0tKlnViqBMPkQ0Eyy7k", 
+            authDomain: "reuniones-9a7ee.firebaseapp.com", 
+            databaseURL: "https://reuniones-9a7ee-default-rtdb.firebaseio.com", 
+            projectId: "reuniones-9a7ee", 
+            storageBucket: "reuniones-9a7ee.appspot.com", 
+            messagingSenderId: "317586889970", 
+            appId: "1:317586889970:web:121ff233788d550464046b", 
+            measurementId: "G-7QMC9M63K0"
+        };
+
+        // Inicializar Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = firebase.firestore(app);
+    </script>
+</body>
+</html>
